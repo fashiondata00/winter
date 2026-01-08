@@ -1,1 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOOKBOOK | URBAN ESCAPE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* [공통 설정 - 메인페이지와 동일] */
+        :root {
+            --black: #111;
+            --white: #fff;
+            --gray: #f4f4f4;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--white);
+            color: var(--black);
+            overflow-x: hidden;
+        }
 
+        h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        a { text-decoration: none; color: inherit; }
+
+        /* [헤더] - 검정 텍스트로 변경 (배경이 흰색이므로) */
+        header {
+            position: fixed; /* 스크롤 해도 따라오게 변경 */
+            top: 0; left: 0; width: 100%;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9); /* 살짝 불투명 */
+            color: var(--black); 
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; }
+        .nav-menu { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 700; }
+        .nav-menu a:hover { text-decoration: underline; }
+
+        /* [룩북 인트로] */
+        .lb-hero {
+            padding: 10rem 5% 4rem;
+            border-bottom: 2px solid var(--black);
+        }
+
+        .lb-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 0.9;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .lb-desc {
+            font-size: 1.2rem;
+            max-width: 600px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        /* [룩북 그리드 - 지그재그 레이아웃] */
+        .lb-container {
+            padding: 5rem 5%;
+        }
+
+        .look-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8rem;
+            gap: 5%;
+        }
+
+        /* 짝수 번째 아이템은 좌우 반전 (지그재그 효과) */
+        .look-item:nth-child(even) {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+
+        .look-img {
+            flex: 1.5;
+            height: 600px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .look-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%); /* 기본 흑백 */
+            transition: transform 0.5s, filter 0.5s;
+        }
+
+        /* 마우스 올리면 컬러 + 확대 */
+        .look-img:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+
+        .look-info {
+            flex: 1;
+        }
+
+        .look-num {
+            font-family: 'Oswald';
+            font-size: 4rem;
+            color: #ddd;
+            font-weight: 700;
+            margin-bottom: -1rem;
+            display: block;
+        }
+
+        .look-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--black);
+            color: var(--white);
+            display: inline-block;
+            padding: 0.5rem 1rem;
+        }
+
+        .look-info p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        /* [반응형] */
+        @media (max-width: 768px) {
+            .look-item, .look-item:nth-child(even) {
+                flex-direction: column;
+                text-align: left;
+                margin-bottom: 5rem;
+            }
+            .look-img { width: 100%; height: 400px; margin-bottom: 2rem; }
+            .look-info h2 { font-size: 1.8rem; }
+        }
+
+        /* [푸터 - 메인과 동일] */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 4rem 5%;
+            text-align: center;
+        }
+        .back-link {
+            color: var(--white);
+            border: 1px solid var(--white);
+            padding: 1rem 3rem;
+            display: inline-block;
+            margin-top: 2rem;
+            transition: 0.3s;
+        }
+        .back-link:hover { background: var(--white); color: var(--black); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><a href="index.html">URBAN ESCAPE.</a></div>
+        <nav class="nav-menu">
+            <a href="index.html">HOME</a>
+            <a href="lookbook.html" style="text-decoration: underline;">LOOKBOOK</a>
+            <a href="#">Myproject</a>
+        </nav>
+    </header>
+
+    <section class="lb-hero">
+        <h1 class="lb-title">2026 WINTER<br>SURVIVAL KIT</h1>
+        <p class="lb-desc">
+            과제와 추위, 그리고 교수님의 피드백으로부터 살아남기 위한 컬렉션.<br>
+            인천대학교 패션산업학과의 겨울은 아직 끝나지 않았습니다.
+        </p>
+    </section>
+
+    <main class="lb-container">
+
+        <article class="look-item">
+            <div class="look-img">
+                <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000&auto=format&fit=crop" alt="Look 1">
+            </div>
+            <div class="look-info">
+                <span class="look-num">01</span>
+                <div>
+                    <h2>THE ALL-NIGHTER</h2>
+                    <p>
+                        <strong>"밤샘 과제용 후디"</strong><br>
+                        도서관 의자에서도 침대 같은 편안함을 제공합니다.<br>
+                        후드를 뒤집어쓰면 세상과의 단절이 가능합니다.<br>
+                        카페인 음료를 쏟아도 티가 나지 않는 다크 블랙 컬러.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article class="look-item">
+            <div class="look-img">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1000&auto=format&fit=crop" alt="Look 2">
+            </div>
+            <div class="look-info">
+                <span class="look-num">02</span>
+                <div>
+                    <h2>DEADLINE CHIC</h2>
+                    <p>
+                        <strong>"마감 5분 전 코트"</strong><br>
+                        뛰어도 펄럭임이 멋스러운 오버사이즈 실루엣.<br>
+                        노트북, 충전기, 외장하드를 모두 수납할 수 있는<br>
+                        4차원 포켓이 내장되어 있습니다.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article class="look-item">
+            <div class="look-img">
+                <img src="https://images.unsplash.com/photo-1550614000-4b9519e0231e?q=80&w=1000&auto=format&fit=crop" alt="Look 3">
+            </div>
+            <div class="look-info">
+                <span class="look-num">03</span>
+                <div>
+                    <h2>GRADUATION WISH</h2>
+                    <p>
+                        <strong>"졸업 기원 셋업"</strong><br>
+                        격식과 반항심 그 사이의 어딘가.<br>
+                        교수님 앞에서는 단정해 보이지만,<br>
+                        뒤돌아서면 힙한 디테일이 숨어있는 반전 매력.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <h2>END OF LOOKBOOK</h2>
+        <a href="index.html" class="back-link">BACK TO HOME</a>
+    </footer>
+
+</body>
+</html>
