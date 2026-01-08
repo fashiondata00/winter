@@ -1,1 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URBAN ESCAPE | Streetwear</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* [공통 설정] */
+        :root {
+            --black: #111;
+            --white: #fff;
+            --gray: #f4f4f4;
+            --accent: #ff3333; /* 포인트 컬러 */
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--white);
+            color: var(--black);
+            overflow-x: hidden;
+        }
 
+        h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        a { text-decoration: none; color: inherit; }
+
+        /* [헤더] - 투명 오버레이 */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            color: var(--white);
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; }
+        .nav-menu { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; }
+
+        /* [섹션 1: 히어로] - 압도적인 타이포그래피 */
+        .hero {
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2000&auto=format&fit=crop') no-repeat center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+        }
+
+        /* 이미지 어둡게 처리 */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 10;
+            color: var(--white);
+            line-height: 0.9;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(4rem, 10vw, 8rem); /* 반응형 폰트 크기 */
+            font-weight: 700;
+        }
+
+        .shop-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--white);
+            color: var(--white);
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .shop-btn:hover { background: var(--white); color: var(--black); }
+
+        /* [섹션 2: 비대칭 컬렉션] - 겹치는 레이아웃 */
+        .collection {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 5rem 5%;
+            background: var(--gray);
+            align-items: center;
+        }
+
+        .col-image {
+            flex: 1 1 500px;
+            position: relative;
+        }
+
+        .col-image img {
+            width: 100%;
+            display: block;
+            filter: grayscale(100%); /* 흑백 처리로 시크하게 */
+        }
+
+        .floating-badge {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid var(--white);
+            color: var(--white);
+            padding: 1rem 2rem;
+            font-size: 2rem;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .col-text {
+            flex: 1 1 400px;
+            padding: 3rem;
+            background: var(--white);
+            margin-left: -5rem; /* 이미지 위로 겹치기 */
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .col-text h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .col-text p { color: #666; line-height: 1.6; margin-bottom: 2rem; }
+
+        /* [섹션 3: 내러티브] - 긴 텍스트 배경 */
+        .narrative {
+            padding: 6rem 5%;
+            background: #dcdcdc; /* 이미지의 탁한 하늘색/회색 톤 */
+            text-align: right;
+        }
+
+        .narrative-content {
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+        }
+
+        .narrative p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-weight: 500;
+            color: var(--white);
+            mix-blend-mode: exclusion; /* 텍스트가 배경과 섞이는 효과 */
+        }
+
+        /* [섹션 4: 타이포그래피 스크롤] - NEVER RUN OUT 스타일 */
+        .big-typo-section {
+            padding: 8rem 5%;
+            position: relative;
+            background: var(--white);
+        }
+
+        .typo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .huge-text {
+            font-size: clamp(5rem, 12vw, 10rem);
+            font-weight: 700;
+            line-height: 0.8;
+        }
+
+        .huge-text.right { text-align: right; }
+        .huge-text.left { text-align: left; }
+        
+        .product-preview {
+            width: 100%;
+            height: 400px;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        /* [푸터] */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 4rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .footer-links a { display: block; margin-bottom: 0.5rem; color: #888; }
+        .footer-logo { font-size: 3rem; font-family: 'Oswald'; }
+
+        /* 반응형 처리 */
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 4rem; }
+            .col-text { margin-left: 0; margin-top: -2rem; padding: 2rem; width: 90%; }
+            .collection { padding: 0; }
+            .typo-grid { grid-template-columns: 1fr; }
+            .huge-text { font-size: 5rem; text-align: center !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">URBAN ESCAPE.</div>
+        <nav class="nav-menu">
+            <a href="#">SHOP</a>
+            <a href="lookbook.html">LOOKBOOK</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>GO<br>AGAINST<br>THE NORM</h1>
+            <a href="#" class="shop-btn">SHOP COLLECTION</a>
+        </div>
+    </section>
+
+    <section class="collection">
+        <div class="col-image">
+            <img src="fashion.png" alt="Fashion Model">
+            <div class="floating-badge">LIMITED<br>EDITION</div>
+        </div>
+        <div class="col-text">
+            <h2>SIGNATURE FIT</h2>
+            <p>
+                우리는 인천대학교 패션산업학과 학생들 입니다. <br>
+                겨울 방학임에도 불구하고 끌려 나와서 홈페이지를 만들고 있습니다.
+            </p>
+            <a href="#" style="font-weight:bold; border-bottom: 2px solid black;">LEARN MORE</a>
+        </div>
+    </section>
+
+    <section class="big-typo-section">
+        <div class="typo-grid">
+            <div class="huge-text left">NEVER</div>
+            <div class="product-preview">
+                <img src="https://images.unsplash.com/photo-1542272617-08f086303294?q=80&w=600&auto=format&fit=crop" style="width:100%; height:100%; object-fit:cover;" alt="Product">
+            </div>
+        </div>
+        <div class="typo-grid">
+             <div></div>
+             <div class="huge-text right">FADE<br>AWAY</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+        <div class="footer-logo">
+            AND YOU?<br>HOW DO YOU<br>ESCAPE?
+        </div>
+    </footer>
+
+</body>
+</html>
